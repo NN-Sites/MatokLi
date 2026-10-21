@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מתוק לי | דוכני מזון מתוקים לאירועים - לינוי</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FFF0F5',
+                            100: '#FFD1DC',
+                            200: '#FFB2C5',
+                            300: '#FF88A5',
+                            500: '#FF6B9D',
+                            600: '#E04B80',
+                            700: '#C71585',
+                            800: '#9E005C',
+                            dark: '#2A0818'
+                        },
+                        gold: {
+                            400: '#F59E0B',
+                            500: '#D97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Rubik', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -5px rgba(255, 107, 157, 0.15)',
+                        'glow': '0 0 25px rgba(255, 107, 157, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: #FAFAFA;
+            color: #2A0818;
+            overflow-x: hidden;
+        }
+        
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, rgba(255, 107, 157, 0.12) 1px, transparent 1px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C71585 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C71585 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 209, 220, 0.6);
+        }
+
+        .pulse-subtle {
+            animation: pulseSubtle 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseSubtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        /* Modal styling */
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal.hidden-modal {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-brand-100 selection:text-brand-800">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-brand-100/60 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl gradient-bg flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-ice-cream text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black gradient-text tracking-wide block leading-none">מתוק לי</span>
+                        <span class="text-xs text-brand-700 font-medium tracking-wider">עיצוב מתוק לאירועים • לינוי</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Menu -->
+                <nav class="hidden md:flex items-center gap-8 text-base font-medium text-gray-700">
+                    <a href="#hero" class="hover:text-brand-600 transition-colors">דף הבית</a>
+                    <a href="#stations" class="hover:text-brand-600 transition-colors">הדוכנים שלנו</a>
+                    <a href="#why-us" class="hover:text-brand-600 transition-colors">למה לבחור בנו?</a>
+                    <a href="#reviews" class="hover:text-brand-600 transition-colors">המלצות</a>
+                    <a href="#contact" class="hover:text-brand-600 transition-colors">צור קשר</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="tel:0502679280" class="flex items-center gap-2 px-4 py-2.5 rounded-full border-2 border-brand-500 text-brand-700 font-bold hover:bg-brand-50 transition-colors text-sm">
+                        <i class="fa-solid fa-phone text-brand-500"></i>
+                        <span>050-2679280</span>
+                    </a>
+                    <a href="https://wa.me/972502679280?text=שלום%20לינוי,%20אשמח%20לקבל%20פרטים%20ולהצעת%20מחיר%20לאירוע" target="_blank" class="flex items-center gap-2 px-5 py-2.5 rounded-full gradient-bg text-white font-bold shadow-md hover:shadow-lg hover:opacity-95 transition-all text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>להצעת מחיר</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2.5 text-gray-700 rounded-xl hover:bg-brand-50 transition-colors focus:outline-none" aria-label="פתח תפריט">
+                    <i id="menuIcon" class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-brand-100 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#hero" class="mobile-link block text-lg font-medium text-gray-800 hover:text-brand-600">דף הבית</a>
+            <a href="#stations" class="mobile-link block text-lg font-medium text-gray-800 hover:text-brand-600">הדוכנים שלנו</a>
+            <a href="#why-us" class="mobile-link block text-lg font-medium text-gray-800 hover:text-brand-600">למה לבחור בנו?</a>
+            <a href="#reviews" class="mobile-link block text-lg font-medium text-gray-800 hover:text-brand-600">המלצות</a>
+            <a href="#contact" class="mobile-link block text-lg font-medium text-gray-800 hover:text-brand-600">צור קשר</a>
+            
+            <div class="pt-4 border-t border-gray-100 flex flex-col gap-3">
+                <a href="tel:0502679280" class="flex items-center justify-center gap-2 py-3 rounded-xl border-2 border-brand-500 text-brand-700 font-bold">
+                    <i class="fa-solid fa-phone text-brand-500"></i>
+                    <span>חייגו: 050-2679280</span>
+                </a>
+                <a href="https://wa.me/972502679280?text=שלום%20לינוי,%20אשמח%20לקבל%20פרטים%20ולהצעת%20מחיר%20לאירוע" target="_blank" class="flex items-center justify-center gap-2 py-3 rounded-xl gradient-bg text-white font-bold">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>וואטסאפ מהיר</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-brand-50 via-white to-white relative overflow-hidden bg-grid-pattern">
+        <!-- Background Glow Orbs -->
+        <div class="absolute top-10 right-10 w-96 h-96 bg-brand-200/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-96 h-96 bg-brand-100/60 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-right space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100/70 border border-brand-200 text-brand-800 text-sm font-semibold shadow-sm">
+                        <span class="flex h-2.5 w-2.5 rounded-full bg-brand-600 animate-ping"></span>
+                        <span>דוכני מזון פרימיום לאירועים מושלמים ✨</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">
+                        <span class="gradient-text">מתוק לי</span> - הופכים כל אירוע לחוויה מתוקה ובלתי נשכחת!
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        נעים להכיר, אני <strong class="text-brand-700 font-bold">לינוי</strong>. אנו מתמחים בהקמת דוכני מתוקים מעוצבים, עשירים וטעימים ברמה הגבוהה ביותר – לבר/בת מצווה, ימי הולדת, אירועי חברה וכל חגיגה שתרצו להמתיק!
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 text-xs sm:text-sm font-semibold text-gray-700 pt-2">
+                        <div class="flex items-center gap-2 bg-white/80 border border-brand-100 px-3.5 py-2 rounded-xl shadow-sm">
+                            <i class="fa-solid fa-star text-gold-400"></i>
+                            <span>שירות מכל הלב</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/80 border border-brand-100 px-3.5 py-2 rounded-xl shadow-sm">
+                            <i class="fa-solid fa-wand-magic-sparkles text-brand-500"></i>
+                            <span>עיצוב אסתטי ונקי</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/80 border border-brand-100 px-3.5 py-2 rounded-xl shadow-sm">
+                            <i class="fa-solid fa-certificate text-brand-500"></i>
+                            <span>כשרות מלאה</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="https://wa.me/972502679280?text=שלום%20לינוי,%20אשמח%20לקבל%20פרטים%20ולהצעת%20מחיר%20לאירוע" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 rounded-2xl gradient-bg text-white font-bold text-lg shadow-lg shadow-brand-500/30 hover:shadow-glow hover:scale-[1.02] active:scale-[0.98] transition-all pulse-subtle">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>להזמנות והצעת מחיר ב-WhatsApp</span>
+                        </a>
+                        <a href="tel:0502679280" class="w-full sm:w-auto flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-white border-2 border-brand-500 text-brand-700 font-bold text-lg shadow-sm hover:bg-brand-50 transition-all">
+                            <i class="fa-solid fa-phone text-brand-500"></i>
+                            <span>חייגו עכשיו: 050-2679280</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Collage / Hero Image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Main Frame -->
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80" alt="דוכני מזון מתוקים" class="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                                <div class="text-white">
+                                    <p class="font-bold text-xl">חוויה מתוקה לכל גיל</p>
+                                    <p class="text-sm text-brand-100">וופל בלגי, פופקורן, ברד, צמר גפן ועוד!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 1 -->
+                        <div class="absolute -top-6 -right-6 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                                🍿
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">פופקורן חם</p>
+                                <p class="text-sm font-bold text-gray-800">טרי ופריך במקום!</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2 -->
+                        <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl">
+                                🍧
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">ברד צבעוני</p>
+                                <p class="text-sm font-bold text-gray-800">מגוון טעמים מרעננים</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="py-8 bg-brand-700 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-x-reverse divide-brand-600/60">
+                <div class="p-2">
+                    <p class="text-3xl sm:text-4xl font-black">100%</p>
+                    <p class="text-xs sm:text-sm text-brand-100 font-medium">שביעות רצון ומתיקות</p>
+                </div>
+                <div class="p-2">
+                    <p class="text-3xl sm:text-4xl font-black">100+</p>
+                    <p class="text-xs sm:text-sm text-brand-100 font-medium">אירועים שמחים</p>
+                </div>
+                <div class="p-2">
+                    <p class="text-3xl sm:text-4xl font-black">5/5</p>
+                    <p class="text-xs sm:text-sm text-brand-100 font-medium">דירוג ביקורות חם</p>
+                </div>
+                <div class="p-2">
+                    <p class="text-3xl sm:text-4xl font-black">שפע</p>
+                    <p class="text-xs sm:text-sm text-brand-100 font-medium">תוספות ללא הגבלה</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Stations Section -->
+    <section id="stations" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs font-bold text-brand-700 uppercase tracking-wider bg-brand-50 inline-block px-4 py-1.5 rounded-full border border-brand-200">
+                    תפריט הדוכנים שלנו
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-black text-gray-900">
+                    דוכנים מעוצבים שיקפיצו לכם את האירוע
+                </h3>
+                <p class="text-gray-600 text-base sm:text-lg">
+                    כל הדוכנים שלנו מגיעים עם תפעול מלא, ציוד חדיש, הגשה אסתטית ושפע רב שמשאיר טעם של עוד.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Station 1: Popcorn -->
+                <div class="group bg-white rounded-3xl border border-brand-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1578849278619-e73505e9610f?auto=format&fit=crop&w=700&q=80" alt="מכונת פופקורן" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-700 shadow-sm">
+                            פופולרי בבר/בת מצווה 🍿
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-2xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
+                            מכונת פופקורן חם וטרי
+                        </h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            פופקורן פריך, מלוח וממכר שמוכן במקום במכונה אמריקאית מקצועית. ריח משגע שממלא את האולם ומושך את כל האורחים!
+                        </p>
+                        <ul class="text-xs text-gray-500 space-y-1.5 pt-2 border-t border-gray-100">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>הגשה בכוסות/שקיות מעוצבות</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>הכנה חמה וטרייה לאורך כל האירוע</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Station 2: Waffles -->
+                <div class="group bg-white rounded-3xl border border-brand-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=700&q=80" alt="וופל בלגי" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-700 shadow-sm">
+                            להיט ענק 🧇
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-2xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
+                            וופל בלגי חם מפנק
+                        </h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            וופל בלגי בלגי פריך מבחוץ ורך מבפנים, מוגש על מקל או בצלחת אישית עם מגוון רחב של רטבים שוקולדיים ותוספות עשירות.
+                        </p>
+                        <ul class="text-xs text-gray-500 space-y-1.5 pt-2 border-t border-gray-100">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>רטבים: שוקולד חלב, לבן, נוטלה, מייפל</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>תוספות: סוכריות, אגוזים, עדשים, מקופלת</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Station 3: Blintzes / Crepes -->
+                <div class="group bg-white rounded-3xl border border-brand-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=700&q=80" alt="בלינצ'ס נימוח" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-700 shadow-sm">
+                            חוויה מתוקה 🥞
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-2xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
+                            בלינצ'ס / קרפ נימוח
+                        </h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            בלינצ'ס צרפתי דק ואיכותי הנעשה במקום מול עיני האורחים. מולא בשוקולדים מובחרים, ממרחים מיוחדים וקצפת.
+                        </p>
+                        <ul class="text-xs text-gray-500 space-y-1.5 pt-2 border-t border-gray-100">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>הכנה פרונטלית חמה במקום</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>מגוון ממרחים איכותיים ביותר</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Station 4: Slushies / Barad -->
+                <div class="group bg-white rounded-3xl border border-brand-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=700&q=80" alt="ברד מרענן" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-700 shadow-sm">
+                            מרענן במיוחד 🥤
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-2xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
+                            ברד מרענן במגוון טעמים
+                        </h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            מכונת ברד מקצועית עם טעמים עשירים ומתוקים (ענבים, תות, אבטיח, לימון ועוד). הפתרון המושלם לרענון הרחבה!
+                        </p>
+                        <ul class="text-xs text-gray-500 space-y-1.5 pt-2 border-t border-gray-100">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>שילוב צבעים ססגוני ומושך</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>קר ומרווה לאורך כל האירוע</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Station 5: Cotton Candy -->
+                <div class="group bg-white rounded-3xl border border-brand-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582293041079-7814c2f12063?auto=format&fit=crop&w=700&q=80" alt="צמר גפן מתוק" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-700 shadow-sm">
+                            נוסטלגיה אהובה ☁️
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h4 class="text-2xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
+                            צמר גפן מתוק (שערות סבתא)
+                        </h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            הענן המתוק שכולם אוהבים! ענני צמר גפן ורודים ולבנים על מקל, שמוכנים במקום ומשמחים ילדים ומבוגרים כאחד.
+                        </p>
+                        <ul class="text-xs text-gray-500 space-y-1.5 pt-2 border-t border-gray-100">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>הכנה רציפה במקום בשפע</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-500"></i>
+                                <span>אטרקציה צבעונית שמחה ופוטוגנית</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Custom Package Card -->
+                <div class="bg-gradient-to-br from-brand-50 to-brand-100 rounded-3xl border-2 border-dashed border-brand-300 p-8 flex flex-col justify-between text-center relative overflow-hidden">
+                    <div class="space-y-4 my-auto">
+                        <div class="w-16 h-16 rounded-2xl bg-white text-brand-600 flex items-center justify-center text-3xl mx-auto shadow-md">
+                            🎁
+                        </div>
+                        <h4 class="text-2xl font-black text-gray-900">
+                            רוצים חבילה משולבת?
+                        </h4>
+                        <p class="text-gray-600 text-sm">
+                            הרכיבו את תפריט החלומות שלכם! צרו עמנו קשר ונרכיב לכם דיל משתלם במיוחד המותאם לגודל האירוע והתקציב.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/972502679280?text=שלום%20לינוי,%20אשמח%20לקבל%20הצעה%20לחבילת%20דוכנים%20משולבת" target="_blank" class="mt-6 w-full py-3.5 px-6 rounded-2xl gradient-bg text-white font-bold text-sm shadow-md hover:shadow-lg transition-all">
+                        להרכבת חבילה מותאמת אישית
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-20 bg-brand-50/50 border-y border-brand-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold text-brand-700 uppercase tracking-wider bg-white inline-block px-4 py-1.5 rounded-full border border-brand-200 shadow-sm">
+                    היתרונות שלנו
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-black text-gray-900">
+                    למה לבחור ב-"מתוק לי" של לינוי?
+                </h3>
+                <p class="text-gray-600 text-base">
+                    אנו שמים דגש על הפרטים הקטנים ביותר כדי שלכם יישאר רק ליהנות עם האורחים.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Advantage 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-100 shadow-sm text-center space-y-4 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900">שירות מכל הלב</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        לינוי והצוות מגיעים עם חיוך רחב, סבלנות ואנרגיות מדהימות שמרעננות כל חגיגה.
+                    </p>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-100 shadow-sm text-center space-y-4 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-solid fa-sparkles"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900">ניקיון ואסתטיקה</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        ציוד חדיש, מבריק ומטופח, עמדות מעוצבות בסגנון נקי ומזמין ברמה הגבוהה ביותר.
+                    </p>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-100 shadow-sm text-center space-y-4 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900">עמידה בזמנים</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        הגעה מוקדמת, הקמה מהירה ותפעול מלא ומקצועי לאורך כל האירוע ללא תקלות.
+                    </p>
+                </div>
+
+                <!-- Advantage 4 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-100 shadow-sm text-center space-y-4 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-2xl mx-auto">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900">איכות וכשרות</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        שימוש מחמיר בחומרי גלם מובחרים, טריים וכשרים, בשפע נדיב לכל החוגגים.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Types Gallery Banner -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-brand-700 to-brand-500 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-xl">
+                <div class="relative z-10 max-w-2xl space-y-4">
+                    <h3 class="text-2xl sm:text-4xl font-black">מתאימים לכל סוגי האירועים!</h3>
+                    <p class="text-brand-100 text-base sm:text-lg">
+                        בר מצווה • בת מצווה • ימי הולדת • אירועי חברה • ימי כיף • מסיבות סוף שנה • בריתות ועוד!
+                    </p>
+                    <div class="pt-2">
+                        <a href="tel:0502679280" class="inline-flex items-center gap-2 bg-white text-brand-800 font-bold px-6 py-3 rounded-xl shadow-md hover:bg-brand-50 transition-colors">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>בדיקת זמינות בתאריך שלכם</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Reviews Section -->
+    <section id="reviews" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold text-brand-700 uppercase tracking-wider bg-brand-100 inline-block px-4 py-1.5 rounded-full">
+                    לקוחות ממליצים
+                </h2>
+                <h3 class="text-3xl sm:text-4xl font-black text-gray-900">
+                    מה אומרים עלינו החוגגים?
+                </h3>
+                <p class="text-gray-600 text-base">
+                    החיוך של הלקוחות והאורחים באירוע הוא ההצלחה הגדולה ביותר שלנו.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-100 shadow-sm relative space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-gold-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm leading-relaxed italic">
+                            "הזמנו את לינוי לבר מצווה של בננו. הדוכנים של הוופל הבלגי והפופקורן היו פשוט הלהיט של הערב! הכל היה נקי ברמות, תקתקני, והילדים לא הפסיקו להחמיא. לינוי פשוט מקסימה!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">
+                            מי
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900 text-sm">מיכל כהן</p>
+                            <p class="text-xs text-gray-500">אירוע בר מצווה, ראשל״צ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-100 shadow-sm relative space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-gold-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm leading-relaxed italic">
+                            "חגגנו יום הולדת 10 לבת שלי והבאנו את דוכני הברד, צמר גפן מתוק ובלינצ'ס. הילדים היו בעננים! לינוי הגיעה מוקדם, ארגנה הכל בצורה אסתטית ומהממת. מומלץ בחום!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">
+                            שנ
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900 text-sm">שני לוי</p>
+                            <p class="text-xs text-gray-500">יום הולדת 10, חולון</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-brand-100 shadow-sm relative space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex text-gold-400 gap-1 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm leading-relaxed italic">
+                            "שירות מדהים ומחיר הוגן מאוד! הוופל הבלגי והפופקורן היו טריים וטעימים ברמות. לינוי עבדה ללא הפסקה בחיוך ובסבלנות. אין ספק שנזמין אותה שוב באירוע הבא!"
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">
+                            דא
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900 text-sm">דניאל אברהם</p>
+                            <p class="text-xs text-gray-500">אירוע חברה, תל אביב</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section & Interactive Form -->
+    <section id="contact" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-3">
+                        <h2 class="text-xs font-bold text-brand-700 uppercase tracking-wider bg-brand-50 inline-block px-4 py-1.5 rounded-full border border-brand-200">
+                            סגירת אירוע
+                        </h2>
+                        <h3 class="text-3xl sm:text-4xl font-black text-gray-900">
+                            מוכנים להמתיק את האירוע שלכם?
+                        </h3>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            השאירו פרטים או חייגו אלינו ישירות לקבלת הצעת מחיר מותאמת אישית ללא כל התחייבות!
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <a href="tel:0502679280" class="flex items-center gap-4 p-4 rounded-2xl bg-brand-50/60 border border-brand-100 hover:bg-brand-100/50 transition-colors">
+                            <div class="w-12 h-12 rounded-xl gradient-bg text-white flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium">טלפון להתקשרות direct</p>
+                                <p class="text-lg font-bold text-gray-900">050-2679280</p>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/972502679280?text=שלום%20לינוי,%20אשמח%20לקבל%20פרטים%20ולהצעת%20מחיר%20לאירוע" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-emerald-50 border border-emerald-100 hover:bg-emerald-100/50 transition-colors">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-2xl shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-emerald-700 font-medium">מענה מהיר בוואטסאפ</p>
+                                <p class="text-lg font-bold text-emerald-900">לחצו לצ'אט ישיר מול לינוי</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-gray-50 border border-gray-100 space-y-2">
+                        <p class="font-bold text-gray-800 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-500"></i>
+                            <span>אזורי שירות:</span>
+                        </p>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            מגיעים לכל אזור המרכז, השפלה והסביבה. לא בטוחים לגבי האזור? צרו קשר ונשמח לבדוק!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Interactive Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl border-2 border-brand-100 p-8 sm:p-10 shadow-xl relative">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-6">
+                            טופס לבדקת זמינות והצעת מחיר
+                        </h4>
+
+                        <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-2">שם מלא *</label>
+                                    <input type="text" id="fullName" required placeholder="ישראל ישראלי" class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-sm transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-2">מספר טלפון *</label>
+                                    <input type="tel" id="phoneNumber" required placeholder="050-0000000" class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-sm transition-all">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-2">סוג האירוע</label>
+                                    <select id="eventType" class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-sm transition-all bg-white">
+                                        <option value="בר/בת מצווה">בר / בת מצווה</option>
+                                        <option value="יום הולדת">יום הולדת</option>
+                                        <option value="אירוע חברה">אירוע חברה</option>
+                                        <option value="מסיבה / אירוע אחר">מסיבה / אירוע אחר</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-700 mb-2">תאריך משוער</label>
+                                    <input type="date" id="eventDate" class="w-full px-4 py-3.5 rounded-xl border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-sm transition-all">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">דוכנים שמעניינים אותך</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                                    <label class="flex items-center gap-2 p-2.5 rounded-lg border border-gray-100 bg-gray-50 cursor-pointer hover:bg-brand-50 transition-colors">
+                                        <input type="checkbox" name="station" value="פופקורן" class="accent-brand-600 rounded">
+                                        <span>פופקורן חם</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-2.5 rounded-lg border border-gray-100 bg-gray-50 cursor-pointer hover:bg-brand-50 transition-colors">
+                                        <input type="checkbox" name="station" value="וופל בלגי" class="accent-brand-600 rounded">
+                                        <span>וופל בלגי</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-2.5 rounded-lg border border-gray-100 bg-gray-50 cursor-pointer hover:bg-brand-50 transition-colors">
+                                        <input type="checkbox" name="station" value="בלינצ'ס" class="accent-brand-600 rounded">
+                                        <span>בלינצ'ס</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-2.5 rounded-lg border border-gray-100 bg-gray-50 cursor-pointer hover:bg-brand-50 transition-colors">
+                                        <input type="checkbox" name="station" value="ברד" class="accent-brand-600 rounded">
+                                        <span>ברד טעמים</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-2.5 rounded-lg border border-gray-100 bg-gray-50 cursor-pointer hover:bg-brand-50 transition-colors">
+                                        <input type="checkbox" name="station" value="צמר גפן" class="accent-brand-600 rounded">
+                                        <span>צמר גפן מתוק</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 mb-2">הערות / כמות אורחים משוערת</label>
+                                <textarea id="notes" rows="3" placeholder="ספרו לנו קצת על האירוע..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none text-sm transition-all"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl gradient-bg text-white font-bold text-lg shadow-lg shadow-brand-500/20 hover:opacity-95 transition-all">
+                                שליחה וקבלת הצעת מחיר
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-12 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex items-center justify-center gap-3">
+                <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center text-white">
+                    <i class="fa-solid fa-ice-cream text-xl"></i>
+                </div>
+                <span class="text-2xl font-black tracking-wide">מתוק לי</span>
+            </div>
+            
+            <p class="text-brand-200 text-sm max-w-md mx-auto">
+                דוכני מזון מתוקים ומעוצבים לכל סוגי האירועים. שירות אדיב, איכות ללא פשרות ומתיקות מכל הלב!
+            </p>
+
+            <div class="flex justify-center gap-6 text-xl text-brand-300">
+                <a href="tel:0502679280" class="hover:text-white transition-colors" title="חייגו אליי"><i class="fa-solid fa-phone"></i></a>
+                <a href="https://wa.me/972502679280" target="_blank" class="hover:text-white transition-colors" title="וואטסאפ"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+
+            <div class="pt-6 border-t border-brand-800/60 text-xs text-brand-300">
+                © כל הזכויות שמורות ל-"מתוק לי" - לינוי | 050-2679280
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed Floating WhatsApp & Call Quick Bar -->
+    <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
+        <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/972502679280?text=שלום%20לינוי,%20אשמח%20לקבל%20פרטים%20ולהצעת%20מחיר%20לאירוע" target="_blank" class="w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 active:scale-95 transition-all relative group" aria-label="פנייה בוואטסאפ">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="absolute right-16 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+                פנייה מהירה בוואטסאפ
+            </span>
+        </a>
+
+        <!-- Floating Phone Button -->
+        <a href="tel:0502679280" class="w-14 h-14 gradient-bg text-white rounded-full flex items-center justify-center text-2xl shadow-2xl hover:scale-110 active:scale-95 transition-all relative group" aria-label="חיוג מהיר">
+            <i class="fa-solid fa-phone"></i>
+            <span class="absolute right-16 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+                חייגו: 050-2679280
+            </span>
+        </a>
+    </div>
+
+    <!-- Success Message Modal -->
+    <div id="successModal" class="modal hidden-modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl border-2 border-brand-100">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">הפרטים התקבלו בהצלחה!</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+                תודה שפניתם ל-"מתוק לי". לינוי תחזור אליכם בהקדם האפשרי עם הצעת מחיר מתוקה במיוחד!
+            </p>
+            <button onclick="closeModal()" class="w-full py-3 rounded-xl gradient-bg text-white font-bold text-sm shadow-md">
+                סגור
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Form Handler (Redirects to WhatsApp with structured message)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const eventType = document.getElementById('eventType').value;
+            const date = document.getElementById('eventDate').value;
+            const notes = document.getElementById('notes').value;
+
+            // Get selected stations
+            const selectedStations = Array.from(document.querySelectorAll('input[name="station"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+
+            // Construct WhatsApp Message
+            let message = `שלום לינוי, אשמח לקבל הצעת מחיר לאירוע:%0A`;
+            message += `👤 *שם:* ${encodeURIComponent(name)}%0A`;
+            message += `📞 *טלפון:* ${encodeURIComponent(phone)}%0A`;
+            message += `🎉 *סוג אירוע:* ${encodeURIComponent(eventType)}%0A`;
+            if (date) message += `📅 *תאריך משוער:* ${encodeURIComponent(date)}%0A`;
+            if (selectedStations) message += `🍿 *דוכנים מבוקשים:* ${encodeURIComponent(selectedStations)}%0A`;
+            if (notes) message += `📝 *הערות:* ${encodeURIComponent(notes)}%0A`;
+
+            // Open WhatsApp
+            window.open(`https://wa.me/972502679280?text=${message}`, '_blank');
+
+            // Show Success Modal
+            showModal();
+
+            // Reset form
+            document.getElementById('leadForm').reset();
+        }
+
+        function showModal() {
+            document.getElementById('successModal').classList.remove('hidden-modal');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden-modal');
+        }
+    </script>
+</body>
+</html>
